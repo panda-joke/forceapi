@@ -1,4 +1,5 @@
 const axios = require('axios');
+const fetch = require("node-fetch");
 const { getAmmTokenPrice, getAmmLpPrice } = require('../api/stats/getAmmPrices');
 
 const CACHE_TIMEOUT = 10 * 60 * 1000;
@@ -20,16 +21,28 @@ function addToCache({ oracle, id, price }) {
 }
 
 const fetchCoingecko = async id => {
-  try {
-    const response = await axios.get('https://api.coingecko.com/api/v3/simple/price', {
-      params: { ids: id, vs_currencies: 'usd' },
-    });
-    return response.data[id].usd;
-  } catch (err) {
-    console.error('fetchCoingecko error:', err);
-    return 0;
-  }
-};
+    let usdprice;
+    let params ={
+      ids: id,
+      vs_currencies: 'usd',
+    };
+    
+    const response = await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?' 
+      + 'ids=' + params.ids + '&' + 'vs_currencies=' + params.vs_currencies,
+      {method: 'GET',
+      headers:{'Content-Type': 'application/json'},}
+    );
+    response
+      .json()
+      .then(response=>{
+        //console.log('usdprice res: ',response);
+        usdprice = response[id].usd;
+        return usdprice;
+      }).catch(err=>{console.error('fetchCoingecko error:', err);
+      return 0;})
+    
+  } ;
 
 const fetchMirror = async id => {
   try {

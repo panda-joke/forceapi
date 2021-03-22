@@ -42,7 +42,7 @@ const getSnobLpApys = require('./snowball/getSnobLpApys');
 const getSuperNovaLpApys = require('./supernova/getSuperNovaLpApys');
 const getPumpyLpApys = require('./pumpy/getPumpyLpApys');
 
-const INIT_DELAY = 4 * 60 * 1000;
+const INIT_DELAY = 5 * 60 * 1000;
 const REFRESH_INTERVAL = 15 * 60 * 1000;
 
 let apys = {};
@@ -60,7 +60,7 @@ const updateApys = async () => {
       getCakeApys(),
       getCakePoolApy(),
       getCakeLpApys(),
-      getFortubeApys(),
+      //getFortubeApys(),
       getBakePoolApy(),
       getBakeryLpApys(),
       getNarLpApys(),
@@ -78,7 +78,7 @@ const updateApys = async () => {
       getNyacashNyasLpApys(),
       getSpongeLpApys(),
       getSpongePoolApy(),
-      getAutoApys(),
+      //getAutoApys(),
       getMdexLpApys(),
       getBtdLpApys(),
       getBtsLpApys(),

@@ -128,16 +128,18 @@ const getAmmTokenPrice = async (tokenSymbol) => {
   const tokenPrices = await getAmmTokensPrices();
   if (tokenPrices.hasOwnProperty(tokenSymbol)) {
     return tokenPrices[tokenSymbol]
-  }
+  } else{
   console.error(`Unknown token '${tokenSymbol}'. Consider adding it to .json file`);
+  }
 };
 
 const getAmmLpPrice = async (lpName) => {
   const lpPrices = await getAmmLpPrices();
   if (lpPrices.hasOwnProperty(lpName)) {
     return lpPrices[lpName]
-  }
+  } else {
   console.error(`Unknown liqudity pair '${lpName}'. Consider adding it to .json file`);
+  }
 };
 
 // Flexible delayed initialization used to work around ratelimits

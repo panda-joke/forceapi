@@ -15,9 +15,7 @@ const CUSTOM_BSC_RPC_ENDPOINTS = [
   process.env.BSC_RPC,
 ].filter(item => item);
 
-const BSC_RPC_ENDPOINTS = CUSTOM_BSC_RPC_ENDPOINTS.length
-  ? CUSTOM_BSC_RPC_ENDPOINTS
-  : MAINNET_BSC_RPC_ENDPOINTS;
+const BSC_RPC_ENDPOINTS = MAINNET_BSC_RPC_ENDPOINTS
 const BSC_RPC = BSC_RPC_ENDPOINTS[0];
 
 const HECO_RPC = process.env.HECO_RPC || 'https://http-mainnet.hecochain.com';
